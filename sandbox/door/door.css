@@ -1,0 +1,208 @@
+/*!
+* CSS3 3D图书展示 (3D Book Showcase)
+* Copyright (c) 2013, 梦幻神化 
+* http://www.bluesdream.com
+*
+* Create: 2013.01.28
+* 
+*/
+
+/* = Reset
+-------------------------------------------------------------- */
+*{ margin:0; padding:0;}
+
+/* = Global
+-------------------------------------------------------------- */
+	body {
+		font-family: 'Cardo',Arial,sans-serif;
+		background: url(bg.jpg) center;
+		-webkit-background-size: cover;
+		background-size: cover;
+		height: 100vh;
+		font-family: 'Open Sans';
+		text-align: center;
+		color: #1e1c1b;
+	}
+
+	p {
+		margin-top: 12px;
+	}
+
+	a {
+		color: #635b55;
+	}
+
+	.title {
+		padding-top: 20px;
+		color: #433c36;
+	}
+
+	a.btn {
+		border: 1px solid #635b55;
+		padding: 12px 35px;
+		display: inline-block;
+		margin-top: 20px;
+		border-radius: 15px;
+		text-decoration: none;
+		cursor: pointer;
+		transition: all 0.6s;
+	}
+
+	a.back {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		padding: 15px 35px 21px 15px;
+		font-weight: bold;
+		text-decoration: none;
+		color: #fff;
+		background-color: #433c36;
+	}
+
+	a.back strong {
+		position: relative;
+		left: 0;
+		font-size: 21px;
+		transition: all 0.6s;
+	}
+
+	a.back:hover strong {
+		left: -5px;
+	}
+
+	.btn:hover {
+		border-radius: 0;
+		color: #1e1c1b;
+		border-color: #1e1c1b;
+	}
+
+	.wall {
+		width: 100%;
+		height: 100vh;
+		background: url(wall-bg.png) top center;
+		position: absolute;
+		z-index: -1;
+	}
+	.txt-right{
+		text-align:right;
+	}
+	.demo-title{
+		height:32px;
+		font-size:32px; color:#92684F; text-align:center;
+		margin:30px 0 44px 0;
+		text-shadow:0 2px 4px rgba(41,48,58,0.3); 
+	}
+	#door {
+		width: 197px;
+		margin: 0 auto;
+		position: relative;
+		-webkit-transition-duration: 2s;
+		-moz-transition-duration: 2s;
+		-ms-transition-duration: 2s;
+		-o-transition-duration: 2s;
+		transition-duration: 2s;
+		-webkit-perspective: 2000px;
+		-moz-perspective: 2000px;
+		-ms-perspective: 2000px;
+		-o-perspective: 2000px;
+		perspective: 2000px;
+	}
+	.main {
+		width:197px;
+		height:573px;
+		transform-origin: right;
+		-webkit-transform-origin: right;/* prefix for Safari and Chrome */
+		-ms-transform-origin: right;/* prefix for IE 9 */
+		color: #92684F;
+		position: relative;
+		top: 67px;
+		left: -18px;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		-webkit-transition-duration: 2s;
+		-moz-transition-duration: 2s;
+		-ms-transition-duration: 2s;
+		-o-transition-duration: 2s;
+		transition-duration: 2s;
+	}
+
+/* = Book Font
+-------------------------------------------------------------- */
+	.door-font{
+		width:197px;
+		height:573px;
+		position:absolute; top:0; bottom:0;
+		font-size:15px; text-align:center;
+		text-shadow:0 2px 0 rgba(30,35,45,1);
+		box-shadow:inset 3px 0 10px rgba(0,0,0,0.1); /* 给书本添加光照阴影 */
+		z-index:10;
+		background: url(door.jpg) center no-repeat;
+		-webkit-transform-style:preserve-3d;
+		-moz-transform-style:preserve-3d;
+		-ms-transform-style:preserve-3d;
+		-o-transform-style:preserve-3d;
+		transform-style:preserve-3d;
+		-webkit-backface-visibility:hidden;
+		-moz-backface-visibility:hidden;
+		-ms-backface-visibility:hidden;
+		-o-backface-visibility:hidden;
+		backface-visibility:hidden;
+	}
+	
+
+/* = Book Back
+-------------------------------------------------------------- */
+	.door-back{
+		width:197px;
+		background: #9d9b9c url(doorback.jpg) center no-repeat;
+		position:absolute; top:0; bottom:0;
+		color:white;
+		-webkit-transform:rotate3d(0,1,0,-180deg) translate3d(0,0,10px);
+		-moz-transform:rotate3d(0,1,0,-180deg) translate3d(0,0,10px);
+		-ms-transform:rotate3d(0,1,0,-180deg) translate3d(0,0,10px);
+		-o-transform:rotate3d(0,1,0,-180deg) translate3d(0,0,10px);
+		transform:rotate3d(0,1,0,-180deg) translate3d(0,0,10px);
+		z-index:8;
+		-webkit-backface-visibility:hidden;
+		-moz-backface-visibility:hidden;
+		-ms-backface-visibility:hidden;
+		-o-backface-visibility:hidden;
+		backface-visibility:hidden;
+	}
+	
+
+/* = Book Bone
+-------------------------------------------------------------- */
+	.door-bone{
+		width:10px;
+		background:#d0cecf;
+		box-shadow:1px 0 0 #d0cecf,-1px 0 0 #d0cecf; /* 旋转的时候 拼接处隐隐约约会有个缝隙 所以加上个阴影来填补它 */
+		position:absolute;
+		top:0; bottom:0; left:0px;
+		transform-origin: right;
+		-webkit-transform-origin: right;/* prefix for Safari and Chrome */
+		-ms-transform-origin: right;/* prefix for IE 9 */
+		-webkit-transform:rotate3d(0,1,0,-90deg);
+		-moz-transform:rotate3d(0,1,0,-90deg);
+		-ms-transform:rotate3d(0,1,0,-90deg);
+		-o-transform:rotate3d(0,1,0,-90deg);
+		transform:rotate3d(0,1,0,-90deg);
+		z-index: 12;
+	}
+
+
+/* = Flip
+-------------------------------------------------------------- */
+	/* Cover */
+	.view-cover:hover .main{
+		transform-origin: right;
+		-webkit-transform-origin: right;/* prefix for Safari and Chrome */
+		-ms-transform-origin: right;/* prefix for IE 9 */
+		-webkit-transform:rotate3d(0,1,0,100deg);
+		-moz-transform:rotate3d(0,1,0,100deg);
+		-ms-transform:rotate3d(0,1,0,100deg);
+		-o-transform:rotate3d(0,1,0,100deg);
+		transform:rotate3d(0,1,0,100deg);
+	}
